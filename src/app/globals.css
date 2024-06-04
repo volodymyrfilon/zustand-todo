@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 body {
-	background-color: #fff;
-	color: #000;
+  background-color: #fff;
+  color: #000;
+}
+
+.container {
+  @apply 3xl:w-[1440px] relative mx-auto w-full px-6 lg:px-8;
 }
