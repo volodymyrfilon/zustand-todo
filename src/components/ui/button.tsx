@@ -1,17 +1,7 @@
+import { ButtonProps } from '@/types/button';
 import Link from 'next/link';
-import React from 'react';
 
-interface ButtonProps {
-  children: React.ReactNode;
-  href?: string;
-  icon?: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'accent' | 'disabled';
-  className?: string;
-  disabled?: boolean;
-  onClick?: () => void;
-}
-
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   children,
   href,
   icon,
@@ -19,8 +9,8 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   disabled = false,
   onClick,
-}) => {
-  const baseStyle = `inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+}: ButtonProps) => {
+  const baseStyle = `inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
     disabled ? 'opacity-50 cursor-not-allowed' : ''
   }`;
 

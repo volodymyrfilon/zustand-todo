@@ -3,7 +3,7 @@ import { IconChevronRight } from '@tabler/icons-react';
 
 const page = () => {
   return (
-    <section className="from-primary to-quaternary-dark flex h-screen w-full flex-col items-start justify-center bg-gradient-to-br">
+    <section className="from-tertiary-dark to-tertiary flex h-screen w-full flex-col items-start justify-center bg-gradient-to-br">
       <div className="container text-white">
         <h1 className="mb-4 text-3xl font-bold">About Us</h1>
         <p className="mb-4 text-lg">

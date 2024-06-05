@@ -2,6 +2,9 @@
 
 import { TodoList } from '@/components/shared/todo/TodoList';
 import { useStore } from '@/store';
+import { checkAuthorization } from '@/utils/auth';
+
+checkAuthorization();
 
 const page = () => {
   const todos = useStore(state => state.todos);
