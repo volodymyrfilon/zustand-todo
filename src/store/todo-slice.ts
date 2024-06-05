@@ -3,6 +3,8 @@ import { StateCreator } from 'zustand';
 
 const initialState: TodoState = {
   todos: [{ id: 0, text: 'Sample TODO', completed: false, removed: false }],
+  editMode: false,
+  hasPermission: false,
 };
 
 export const createTodoSlice: StateCreator<TodoSlice, [], [], TodoSlice> = set => ({
@@ -23,8 +25,12 @@ export const createTodoSlice: StateCreator<TodoSlice, [], [], TodoSlice> = set =
     })),
   setTodos: todos => set(() => ({ todos })),
   toggleEditMode: () =>
-    set(state => ({
-      editMode: !state.editMode,
-    })),
-  editMode: false,
+    set(state => {
+      const token = sessionStorage.getItem('authToken');
+      const hasPermission = !!token;
+      return {
+        editMode: hasPermission,
+        hasPermission,
+      };
+    }),
 });

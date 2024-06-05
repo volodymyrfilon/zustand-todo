@@ -1,4 +1,4 @@
-type Todo = {
+export type Todo = {
   id: number;
   text: string;
   completed: boolean;
@@ -7,6 +7,8 @@ type Todo = {
 
 export type TodoState = {
   todos: Todo[];
+  editMode: boolean;
+  hasPermission: boolean;
 };
 
 export type TodoActions = {

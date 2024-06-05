@@ -21,7 +21,7 @@ export const Navigation = ({ className }: classNameProps) => {
           </Button>
         </li>
         <li>
-          <Button href="/register" className="!bg-secondary-dark" disabled>
+          <Button className="!bg-secondary-dark" disabled>
             Sign up
           </Button>
         </li>

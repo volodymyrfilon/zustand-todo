@@ -71,12 +71,7 @@ export const MobileNavigation = ({ className }: classNameProps) => {
           <Button className="w-full flex-1" href="/login" variant="secondary" onClick={closeMenu}>
             Sign in
           </Button>
-          <Button
-            className="!bg-secondary-dark w-full flex-1"
-            href="/register"
-            disabled
-            onClick={closeMenu}
-          >
+          <Button className="!bg-secondary-dark w-full flex-1" disabled onClick={closeMenu}>
             Sign up
           </Button>
         </div>

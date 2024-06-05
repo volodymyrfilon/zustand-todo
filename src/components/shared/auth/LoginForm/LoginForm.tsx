@@ -2,8 +2,8 @@
 
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
+import { useStore } from '@/store';
 import { classNameProps } from '@/types/className';
-import { login } from '@/utils/auth';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -23,6 +23,7 @@ export const LoginForm = ({ className }: classNameProps) => {
     username: '',
     password: '',
   });
+  const login = useStore(state => state.login);
 
   const validateForm = () => {
     const { username, password } = formData;
@@ -36,12 +37,10 @@ export const LoginForm = ({ className }: classNameProps) => {
     }
     return true;
   };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validateForm()) return;
     const { username, password } = formData;
-
     try {
       setSigningIn(true);
       await login(username, password);

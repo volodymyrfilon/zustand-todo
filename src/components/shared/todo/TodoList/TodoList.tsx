@@ -1,34 +1,19 @@
-import { useStore } from '@/store';
+import { useStore } from '@/store/';
+import { TodoItem } from '../TodoItem';
 
-export const TodoList = ({ todos }) => {
-  const toggleTodo = useStore(state => state.toggleTodo);
-  const removeTodo = useStore(state => state.removeTodo);
-  const editMode = useStore(state => state.editMode);
-  const sortedTodos = todos.sort((a, b) => a.completed - b.completed);
+export const TodoList = () => {
+  const todos = useStore(state => state.todos);
+
+  const sortedTodos = todos.slice().sort((a, b) => {
+    if (a.completed === b.completed) return 0;
+    return a.completed ? 1 : -1;
+  });
 
   return (
-    <ul className="list-none p-0">
+    <div className="flex flex-col gap-y-2">
       {sortedTodos.map(todo => (
-        <li
-          key={todo.id}
-          className={`flex justify-between p-2 ${todo.removed ? 'line-through' : ''}`}
-        >
-          <span>{todo.text}</span>
-          <div>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => toggleTodo(todo.id)}
-              className="mr-2"
-            />
-            {editMode && (
-              <button onClick={() => removeTodo(todo.id)} className="text-red-500">
-                Remove
-              </button>
-            )}
-          </div>
-        </li>
+        <TodoItem key={todo.id} {...todo} />
       ))}
-    </ul>
+    </div>
   );
 };
