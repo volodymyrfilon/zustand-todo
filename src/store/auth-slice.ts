@@ -10,7 +10,12 @@ const initialAuthState: AuthState = {
   checkAuthorization: () => {},
 };
 
-export const createAuthSlice: StateCreator<AuthState, [], [], AuthState> = set => ({
+export const createAuthSlice: StateCreator<
+  AuthState,
+  [['zustand/immer', never]],
+  [],
+  AuthState
+> = set => ({
   ...initialAuthState,
   login: async (username: string, password: string) => {
     const { token, user } = (await login(username, password)) as {

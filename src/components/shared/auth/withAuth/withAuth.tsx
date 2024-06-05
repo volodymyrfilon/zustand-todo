@@ -1,19 +1,14 @@
-'use client';
-
 import { useStore } from '@/store';
-import { useRouter } from 'next/navigation';
 import { ComponentType, useEffect } from 'react';
 
 export const withAuth = (WrappedComponent: ComponentType) => {
   return (props: any) => {
-    const router = useRouter();
     const token = useStore(state => state.token);
+    const checkAuthorization = useStore(state => state.checkAuthorization);
 
     useEffect(() => {
-      if (!token) {
-        router.replace('/unauthorized');
-      }
-    }, [token, router]);
+      checkAuthorization();
+    }, [token]);
 
     if (!token) {
       return null;

@@ -5,6 +5,7 @@ const Button = ({
   children,
   href,
   icon,
+  ariaLabel,
   variant = 'primary',
   className = '',
   disabled = false,
@@ -33,9 +34,14 @@ const Button = ({
   }
 
   return (
-    <button className={combinedStyles} onClick={disabled ? undefined : onClick} disabled={disabled}>
-      {icon && <span className="mr-2">{icon}</span>}
+    <button
+      className={combinedStyles}
+      aria-label={ariaLabel}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
+    >
       {children}
+      {icon && <span className="ml-1.5">{icon}</span>}
     </button>
   );
 };

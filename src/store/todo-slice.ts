@@ -7,7 +7,12 @@ const initialState: TodoState = {
   hasPermission: false,
 };
 
-export const createTodoSlice: StateCreator<TodoSlice, [], [], TodoSlice> = set => ({
+export const createTodoSlice: StateCreator<
+  TodoSlice,
+  [['zustand/immer', never]],
+  [],
+  TodoSlice
+> = set => ({
   ...initialState,
   addTodo: (text: string) =>
     set(state => ({
