@@ -2,11 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --color-primary: #606c38;
+  --color-secondary: #283618;
+  --color-accent: #fefae0;
+  --color-tertiary: #dda15e;
+  --color-quaternary: #bc6c25;
+}
+
 body {
   background-color: #fff;
   color: #000;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .container {
-  @apply 3xl:w-[1440px] relative mx-auto w-full px-6 lg:px-8;
+  @apply w-full px-6 lg:px-8 3xl:mx-auto 3xl:w-[1440px];
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.logo-animation {
+  background: linear-gradient(
+    45deg,
+    var(--color-secondary),
+    var(--color-quaternary),
+    var(--color-secondary)
+  );
+  background-size: 200% 200%;
+  animation: gradient 3s infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 500% 500%;
 }

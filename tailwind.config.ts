@@ -12,7 +12,22 @@ const config: Config = {
       '2xl': '1440px',
       '3xl': '1920px',
     },
+    extend: {
+      colors: {
+        primary: '#606C38',
+        'primary-dark': '#3F4B25',
+        secondary: '#283618',
+        'secondary-dark': '#1C2414',
+        accent: '#FEFAE0',
+        'accent-dark': '#E4DFC4',
+        tertiary: '#DDA15E',
+        'tertiary-dark': '#B07A40',
+        quaternary: '#BC6C25',
+        'quaternary-dark': '#945219',
+      },
+    },
   },
   plugins: [],
 };
+
 export default config;

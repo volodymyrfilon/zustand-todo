@@ -1,8 +1,8 @@
 'use client';
 
-import { Button, PasswordInput, TextInput } from '@mantine/core';
+import { Button, CloseButton, PasswordInput, TextInput } from '@mantine/core';
 import { isNotEmpty, useForm } from '@mantine/form';
-import { IconAt, IconLock, IconLogin2, IconX } from '@tabler/icons-react';
+import { IconAt, IconLock, IconLogin2 } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -21,8 +21,8 @@ export const LoginForm = (className: classNameProps) => {
       password: '',
     },
     validate: {
-      username: isNotEmpty('Username cannot be empty'),
-      password: isNotEmpty('Enter your password'),
+      username: isNotEmpty('Username cannot be empty (hint: try "user")'),
+      password: isNotEmpty('Enter your password (hint: try "password")'),
     },
   });
 
@@ -38,12 +38,12 @@ export const LoginForm = (className: classNameProps) => {
     try {
       setSigningIn(true);
       await login(username, password);
-      form.reset();
-      setSigningIn(false);
       router.push('/todo');
     } catch (err) {
+      setError('Invalid credentials :(');
+    } finally {
+      form.reset();
       setSigningIn(false);
-      setError('Invalid credentials');
     }
   };
 
@@ -54,32 +54,36 @@ export const LoginForm = (className: classNameProps) => {
     >
       <TextInput
         label="Username"
-        placeholder="Enter username"
+        placeholder="Enter 'user'"
         leftSection={<IconAt size={16} stroke={1.5} />}
         rightSectionPointerEvents="all"
         key={form.key('username')}
         {...form.getInputProps('username')}
         rightSection={
-          <IconX
+          <CloseButton
             className="cursor-pointer"
-            size={16}
-            stroke={1.5}
+            size={18}
             aria-label="Clear input"
-            onClick={() => (form.values.username = '')}
+            onClick={() => form.setFieldValue('username', '')}
           />
         }
       />
       <PasswordInput
         leftSection={<IconLock size={18} stroke={1.5} />}
         label="Password"
-        placeholder="Enter password"
+        placeholder="Enter 'password'"
         key={form.key('password')}
         {...form.getInputProps('password')}
       />
-      <Button type="submit" rightSection={<IconLogin2 size={18} stroke={1.5} />}>
+      <Button
+        className="transition-all duration-300"
+        type="submit"
+        disabled={signingIn}
+        rightSection={<IconLogin2 size={18} stroke={1.5} />}
+      >
         {!signingIn ? 'Sign in' : 'Signing in...'}
       </Button>
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
     </form>
   );
 };
