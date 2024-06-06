@@ -36,7 +36,7 @@ export const LoginForm = ({ className }: classNameProps) => {
 
   useEffect(() => {
     token && user ? router.push('/todo') : null;
-  }, [token, user]);
+  }, [token, user, router]);
 
   const validateForm = () => {
     const { username, password } = formData;
