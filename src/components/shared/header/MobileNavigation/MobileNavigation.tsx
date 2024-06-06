@@ -47,12 +47,12 @@ export const MobileNavigation = ({ className }: classNameProps) => {
       />
 
       <div
-        className={`fixed inset-0 bg-black/50 ${menuOpen ? 'block' : 'hidden'}`}
+        className={`fixed inset-0 z-50 bg-black/50 ${menuOpen ? 'block' : 'hidden'}`}
         onClick={toggleMenu}
       />
 
       <nav
-        className={`fixed bottom-0 right-0 top-0 transform overflow-hidden bg-primary px-6 py-4 transition-all duration-300 ease-in-out ${menuOpen ? 'visible w-4/5' : 'invisible w-0 translate-x-full'}`}
+        className={`fixed bottom-0 right-0 top-0 z-[99] transform overflow-hidden bg-primary px-6 py-4 transition-all duration-300 ease-in-out ${menuOpen ? 'visible w-4/5' : 'invisible w-0 translate-x-full'}`}
       >
         <Logo />
         <Button
