@@ -47,12 +47,12 @@ export const MobileNavigation = ({ className }: classNameProps) => {
       />
 
       <div
-        className={`fixed inset-0 bg-black/50 transition-opacity duration-300 ${menuOpen ? 'block' : 'hidden'}`}
+        className={`fixed inset-0 bg-black/50 ${menuOpen ? 'block' : 'hidden'}`}
         onClick={toggleMenu}
       />
 
       <nav
-        className={`bg-primary fixed bottom-0 right-0 top-0 transform overflow-hidden px-6 py-4 transition-all duration-300 ease-in-out ${menuOpen ? 'visible w-4/5' : 'invisible w-0 translate-x-full'}`}
+        className={`fixed bottom-0 right-0 top-0 transform overflow-hidden bg-primary px-6 py-4 transition-all duration-300 ease-in-out ${menuOpen ? 'visible w-4/5' : 'invisible w-0 translate-x-full'}`}
       >
         <Logo />
         <Button
@@ -60,9 +60,9 @@ export const MobileNavigation = ({ className }: classNameProps) => {
           ariaLabel="Close menu"
           onClick={closeMenu}
         >
-          <IconX size={24} stroke={1.5} color="black" />
+          <IconX size={24} stroke={1.5} color="white" />
         </Button>
-        <ul className="[&>*]:border-primary-dark text-secondary-dark mt-20 flex flex-col [&>*]:border-b [&>*]:py-2.5 [&>*]:pl-2 [&>*]:text-lg [&>*]:font-medium">
+        <ul className="mt-20 flex flex-col text-white [&>*]:border-b [&>*]:border-primary-dark [&>*]:py-2.5 [&>*]:pl-4 [&>*]:text-lg [&>*]:font-medium">
           <li className="border-t">
             <Link href="/" onClick={closeMenu}>
               Home
@@ -84,7 +84,7 @@ export const MobileNavigation = ({ className }: classNameProps) => {
             <Button
               onClick={logout}
               ariaLabel="Logout"
-              variant="secondary"
+              variant="accent"
               icon={<IconLogout size={20} stroke={1.5} />}
             >
               Log out
@@ -94,14 +94,14 @@ export const MobileNavigation = ({ className }: classNameProps) => {
               <Button
                 href="/login"
                 ariaLabel="Sign in"
-                variant="secondary"
+                variant="accent"
                 icon={<IconLogin2 size={20} stroke={1.5} />}
                 onClick={closeMenu}
               >
                 Sign in
               </Button>
               <Button
-                className="!bg-secondary-dark"
+                className="!bg-accent-dark"
                 ariaLabel="Sign up"
                 icon={<IconKey size={20} stroke={1.5} />}
                 disabled

@@ -18,7 +18,7 @@ export const Navigation = ({ className }: classNameProps) => {
 
   return (
     <nav className={className}>
-      <ul className={`hover:[&>*]:text-tertiary flex items-center gap-x-4 font-medium text-white`}>
+      <ul className="flex items-center gap-x-4 font-semibold text-white hover:[&>*]:text-accent">
         <li>
           <Link href="/">Home</Link>
         </li>
@@ -33,7 +33,7 @@ export const Navigation = ({ className }: classNameProps) => {
             <Button
               onClick={logout}
               ariaLabel="Logout"
-              variant="secondary"
+              variant="accent"
               icon={<IconLogout size={20} stroke={1.5} />}
             >
               Log out
@@ -45,7 +45,7 @@ export const Navigation = ({ className }: classNameProps) => {
               <Button
                 href="/login"
                 ariaLabel="Sign in"
-                variant="secondary"
+                variant="accent"
                 icon={<IconLogin2 size={20} stroke={1.5} />}
               >
                 Sign in
@@ -53,7 +53,7 @@ export const Navigation = ({ className }: classNameProps) => {
             </li>
             <li>
               <Button
-                className="!bg-secondary-dark"
+                className="!bg-accent-dark"
                 ariaLabel="Sign up"
                 icon={<IconKey size={20} stroke={1.5} />}
                 disabled

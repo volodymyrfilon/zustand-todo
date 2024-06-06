@@ -16,10 +16,10 @@ const Button = ({
   }`;
 
   const variantStyles: Record<string, string> = {
-    primary: 'bg-primary text-white hover:bg-primary-dark focus:ring-tertiary',
-    secondary: 'bg-secondary text-white hover:bg-secondary-dark focus:ring-tertiary',
-    accent: 'bg-accent text-primary hover:bg-accent-dark focus:ring-tertiary',
-    disabled: 'bg-gray-300 text-gray-700 cursor-not-allowed focus:ring-primary-dark',
+    primary: 'bg-primary text-white hover:bg-primary-dark focus:ring-primary',
+    secondary: 'bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary',
+    accent: 'bg-accent text-white hover:bg-accent-dark focus:ring-accent',
+    disabled: 'bg-neutralColor text-neutralColor-dark cursor-not-allowed focus:ring-neutralColor',
   };
 
   const combinedStyles = `${baseStyle} ${variantStyles[variant]} ${className}`;

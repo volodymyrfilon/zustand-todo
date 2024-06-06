@@ -12,7 +12,7 @@ export const Input = ({
 }: InputProps) => {
   return (
     <div className={`flex flex-col ${className}`}>
-      <label htmlFor={id} className="text-primary mb-2 font-semibold">
+      <label htmlFor={id} className="mb-2 font-semibold text-primary">
         {label}
       </label>
       <input
@@ -21,7 +21,7 @@ export const Input = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`focus:ring-primary-dark w-full rounded border border-gray-300 p-2 focus:outline-none focus:ring-2 ${error ? 'border-red-500' : ''}`}
+        className={`w-full rounded border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-primary-dark ${error ? 'border-red-500' : ''}`}
       />
       {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>

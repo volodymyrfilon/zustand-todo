@@ -7,10 +7,10 @@ import { TodoList } from '@/components/shared/todo/TodoList';
 
 const page = () => {
   return (
-    <section className="from-tertiary-dark to-tertiary min-h-screen bg-gradient-to-br pt-16">
-      <div className="container">
-        <h1 className="text-2xl font-bold">Todo App</h1>
-        <EditToggler />
+    <section className="min-h-screen bg-gradient-to-br from-primary-dark to-primary pt-16 text-white">
+      <div className="container flex flex-col gap-y-4">
+        <h1 className="text-2xl font-black uppercase">Todo List</h1>
+        <EditToggler className="max-w-max" />
         <AddTodo />
         <TodoList />
       </div>

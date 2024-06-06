@@ -4,8 +4,10 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import { useStore } from '@/store';
 import { classNameProps } from '@/types/className';
+import { IconLogin2 } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 
 export const LoginForm = ({ className }: classNameProps) => {
   const router = useRouter();
@@ -23,10 +25,29 @@ export const LoginForm = ({ className }: classNameProps) => {
     username: '',
     password: '',
   });
-  const login = useStore(state => state.login);
+
+  const { token, user, login } = useStore(
+    useShallow(state => ({
+      token: state.token,
+      user: state.user,
+      login: state.login,
+    }))
+  );
+
+  useEffect(() => {
+    token && user ? router.push('/todo') : null;
+  }, [token, user]);
 
   const validateForm = () => {
     const { username, password } = formData;
+    if (!username && !password) {
+      setErrors({
+        ...errors,
+        passwordError: 'Enter your password (hint: try "password")',
+        usernameError: 'Username cannot be empty (hint: try "user")',
+      });
+      return false;
+    }
     if (!username) {
       setErrors({ ...errors, usernameError: 'Username cannot be empty (hint: try "user")' });
       return false;
@@ -37,6 +58,7 @@ export const LoginForm = ({ className }: classNameProps) => {
     }
     return true;
   };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validateForm()) return;
@@ -76,7 +98,9 @@ export const LoginForm = ({ className }: classNameProps) => {
       <Button
         disabled={signingIn}
         variant="primary"
-        className="bg-primary rounded p-2 text-white transition-all duration-300"
+        ariaLabel="Sign in"
+        className="rounded bg-primary p-2 text-white transition-all duration-300"
+        icon={<IconLogin2 size={20} stroke={1.5} />}
       >
         {!signingIn ? 'Sign in' : 'Signing in...'}
       </Button>

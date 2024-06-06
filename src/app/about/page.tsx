@@ -3,7 +3,7 @@ import { IconChevronRight } from '@tabler/icons-react';
 
 const page = () => {
   return (
-    <section className="from-tertiary-dark to-tertiary flex h-screen w-full flex-col items-start justify-center bg-gradient-to-br">
+    <section className="flex h-screen w-full flex-col items-start justify-center bg-gradient-to-br from-primary-dark to-primary">
       <div className="container flex flex-col gap-y-4 text-white">
         <h1 className="text-3xl font-bold">About Us</h1>
         <p className="text-lg">
@@ -19,12 +19,13 @@ const page = () => {
           lacinia.
         </p>
         <Button
+          ariaLabel="Go to Homepage"
           className="max-w-max"
           href="/"
-          variant="accent"
-          icon={<IconChevronRight size={18} stroke={1.5} />}
+          variant="secondary"
+          icon={<IconChevronRight size={20} stroke={1.5} />}
         >
-          Back to Home
+          Home
         </Button>
       </div>
     </section>

@@ -2,7 +2,7 @@ import { TodoSlice, TodoState } from '@/types/todo';
 import { StateCreator } from 'zustand';
 
 const initialState: TodoState = {
-  todos: [{ id: 0, text: 'Sample TODO', completed: false, removed: false }],
+  todos: [{ id: 0, text: 'First Todo', completed: false, removed: false }],
   editMode: false,
   hasPermission: false,
 };
@@ -28,14 +28,23 @@ export const createTodoSlice: StateCreator<
     set(state => ({
       todos: state.todos.map(todo => (todo.id === id ? { ...todo, removed: true } : todo)),
     })),
-  setTodos: todos => set(() => ({ todos })),
   toggleEditMode: () =>
     set(state => {
       const token = sessionStorage.getItem('authToken');
       const hasPermission = !!token;
-      return {
-        editMode: hasPermission,
-        hasPermission,
-      };
+
+      return hasPermission
+        ? {
+            editMode: !state.editMode,
+            hasPermission,
+          }
+        : {
+            editMode: false,
+            hasPermission,
+          };
     }),
+  deleteTodo: (id: number) =>
+    set(state => ({
+      todos: state.todos.filter(todo => todo.id !== id),
+    })),
 });

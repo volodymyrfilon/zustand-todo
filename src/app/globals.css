@@ -5,16 +5,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --color-primary: #606c38;
-  --color-secondary: #283618;
-  --color-accent: #fefae0;
-  --color-tertiary: #dda15e;
-  --color-quaternary: #bc6c25;
+  --color-primary: #2d9cdb;
+  --color-primary-dark: #1a73e8;
+  --color-secondary: #27ae60;
+  --color-secondary-dark: #1c7c46;
+  --color-accent: #f2994a;
+  --color-accent-dark: #c77936;
+  --color-neutralColor: #f2f2f2;
+  --color-neutralColor-dark: #e0e0e0;
+  --color-textColor: #333333;
+  --color-textColor-dark: #111111;
 }
 
 body {
   background-color: #fff;
-  color: #000;
+  color: var(--color-textColor);
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -37,13 +42,12 @@ body {
 .logo-animation {
   background: linear-gradient(
     45deg,
-    var(--color-secondary),
-    var(--color-quaternary),
-    var(--color-secondary)
+    var(--color-accent),
+    var(--color-neutralColor),
+    var(--color-accent)
   );
-  background-size: 200% 200%;
   animation: gradient 3s infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 500% 500%;
+  background-size: 700% 700%;
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import { useStore } from '@/store';
 import { ComponentType, useEffect } from 'react';
 

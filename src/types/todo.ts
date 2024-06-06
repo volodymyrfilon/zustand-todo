@@ -14,8 +14,8 @@ export type TodoState = {
 export type TodoActions = {
   addTodo: (text: string) => void;
   removeTodo: (id: number) => void;
+  deleteTodo: (id: number) => void;
   toggleTodo: (id: number) => void;
-  setTodos: (todos: Todo[]) => void;
   toggleEditMode: () => void;
   editMode: boolean;
 };
