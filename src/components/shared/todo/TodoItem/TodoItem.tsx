@@ -1,7 +1,7 @@
 import Button from '@/components/ui/button';
 import { useStore } from '@/store/';
 import { Todo } from '@/types/todo';
-import { IconEyeOff, IconX } from '@tabler/icons-react';
+import { IconEyeOff, IconTrash } from '@tabler/icons-react';
 
 export const TodoItem = ({ id, text, completed, removed }: Todo) => {
   const toggleTodo = useStore(state => state.toggleTodo);
@@ -24,8 +24,8 @@ export const TodoItem = ({ id, text, completed, removed }: Todo) => {
         />
         <p className={`flex-1 text-lg font-semibold ${completed ? 'line-through' : ''}`}>{text}</p>
       </div>
-      {editMode && (
-        <div className="flex gap-x-2">
+      <div className="flex gap-x-2">
+        {editMode && (
           <Button
             onClick={() => removeTodo(id)}
             ariaLabel="Remove item"
@@ -34,16 +34,15 @@ export const TodoItem = ({ id, text, completed, removed }: Todo) => {
           >
             Remove
           </Button>
-          <Button
-            onClick={() => deleteTodo(id)}
-            ariaLabel="Delete item"
-            className="!bg-red-500 !ring-red-400"
-            icon={<IconX size={20} stroke={1.5} />}
-          >
-            Delete
-          </Button>
-        </div>
-      )}
+        )}
+        <Button
+          onClick={() => deleteTodo(id)}
+          ariaLabel="Delete item"
+          className="!bg-red-500 !ring-red-400"
+        >
+          <IconTrash size={20} stroke={1.5} />
+        </Button>
+      </div>
     </div>
   );
 };

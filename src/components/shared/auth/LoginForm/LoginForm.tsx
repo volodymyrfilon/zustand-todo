@@ -69,17 +69,17 @@ export const LoginForm = ({ className }: classNameProps) => {
       router.push('/todo');
     } catch (err) {
       setErrors({ ...errors, rootError: 'Invalid credentials :(' });
-    } finally {
       setFormData({
         username: '',
         password: '',
       });
+    } finally {
       setSigningIn(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`flex w-80 flex-col gap-y-4 ${className}`}>
+    <form onSubmit={handleSubmit} className={`flex w-full flex-col gap-y-4 ${className}`}>
       <Input
         label="Username"
         value={formData.username}
