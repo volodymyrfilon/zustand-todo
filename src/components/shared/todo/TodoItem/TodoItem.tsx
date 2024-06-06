@@ -24,7 +24,7 @@ export const TodoItem = ({ id, text, completed, removed }: Todo) => {
 
   return (
     <div
-      className={`flex w-full flex-col justify-between rounded-lg bg-accent p-4 md:flex-row md:items-center ${removed ? 'text-gray-400 opacity-60' : 'text-textColor'}`}
+      className={`z-[1] flex w-full flex-col justify-between rounded-lg bg-accent p-4 md:flex-row md:items-center ${removed ? 'text-gray-400 opacity-60' : 'text-textColor'}`}
     >
       <div className="mb-2 flex w-full flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4 md:mb-0">
         <input
