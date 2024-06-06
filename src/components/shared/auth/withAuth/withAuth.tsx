@@ -10,6 +10,7 @@ export const withAuth = (WrappedComponent: ComponentType) => {
 
     useEffect(() => {
       checkAuthorization();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     if (!token) {
