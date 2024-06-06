@@ -4,7 +4,7 @@ import { useStore } from '@/store';
 import { ComponentType, useEffect } from 'react';
 
 export const withAuth = (WrappedComponent: ComponentType) => {
-  return (props: any) => {
+  const WithAuth = (props: any) => {
     const token = useStore(state => state.token);
     const checkAuthorization = useStore(state => state.checkAuthorization);
 
@@ -19,4 +19,8 @@ export const withAuth = (WrappedComponent: ComponentType) => {
 
     return <WrappedComponent {...props} />;
   };
+
+  WithAuth.displayName = `WithAuth(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+
+  return WithAuth;
 };
