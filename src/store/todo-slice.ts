@@ -24,6 +24,10 @@ export const createTodoSlice: StateCreator<
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       ),
     })),
+  editTodo: (id: number, newText: string) =>
+    set(state => ({
+      todos: state.todos.map(todo => (todo.id === id ? { ...todo, text: newText } : todo)),
+    })),
   removeTodo: (id: number) =>
     set(state => ({
       todos: state.todos.map(todo => (todo.id === id ? { ...todo, removed: true } : todo)),
